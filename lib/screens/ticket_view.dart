@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/styles/app_layout.dart';
 import 'package:flutter_app/styles/app_style.dart';
+import 'package:flutter_app/widgets/thick_container.dart';
 
 class TicketView extends StatelessWidget {
   const TicketView({Key? key}) : super(key: key);
@@ -33,11 +34,23 @@ class TicketView extends StatelessWidget {
                             Styles.headlineStyle3.copyWith(color: Colors.white),
                       ),
                       const Spacer(),
-                      Text(
-                        "London",
-                        style:
-                            Styles.headlineStyle3.copyWith(color: Colors.white),
+                    ThickContainer(),
+                    Expanded(child: SizedBox(
+                      height: 24,
+                      child: LayoutBuilder(
+
+                        builder: (BuildContext context, BoxConstraints constraints) {
+                          return Flex(
+                            direction: Axis.horizontal,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: List.generate(5, (index) => Text("-"),),
+                          );
+                        },
+
                       ),
+                    )),
+                    Transform.rotate(angle: 1.5,child: Icon(Icons.airplanemode_active,color: Colors.white,),),
+                    ThickContainer(),
                       const Spacer(),
                       Text(
                         "NYC",
